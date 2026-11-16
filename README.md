@@ -12,6 +12,9 @@ A lightweight, self-hosted electricity interruption tracker for a Linux host. It
 - A detected incident when a heartbeat gap exceeds **180 seconds**.
 - Overview statistics for today, the last 7 days, the last 30 days, and all recorded events.
 - Recent-incident history; no cloud account or external monitoring service required.
+- Reverse-chronological recent-days timeline (today first).
+- Interactive 12-month activity calendar, showing daily downtime intensity and unknown dates.
+- Time-of-day incident start distribution, median incident duration, quiet intervals and overnight downtime share.
 
 ## How it works
 
@@ -123,6 +126,16 @@ Removing files from the current branch does **not** erase them from earlier publ
 - Timestamps depend on the host's local clock and the heartbeat interval.
 - When the monitored host is offline, its local dashboard is unavailable.
 - The current UI's uptime calculation and grouping should not be treated as independently verified power-meter statistics.
+
+## Frontend validation
+
+The historical-insights helpers can be checked with Node.js (no extra packages needed):
+
+```bash
+node --test tests/insights.test.cjs
+```
+
+The new visualizations derive their values from the same existing `/api/outages` history; no backend or database migration is required.
 
 ## License
 

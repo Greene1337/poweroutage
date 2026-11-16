@@ -15,6 +15,46 @@
 .seven{display:flex;flex-direction:column;gap:15px}.weekrow{display:grid;grid-template-columns:94px 1fr 66px;align-items:center;gap:15px}.day,.pct{color:var(--muted);font-size:12px}.day b{color:var(--ink);font-weight:550}.pct{text-align:right;font-variant-numeric:tabular-nums}.weekbar{height:13px;background:#376c57;border-radius:3px;position:relative;overflow:hidden}.weekbar .slice{height:100%;position:absolute;top:0;background:#9b525b}.weekbar .slice.unknown{background:#59616b}.lower{display:grid;grid-template-columns:1.35fr 1fr;gap:13px;margin-top:13px}.events{display:flex;flex-direction:column}.event{display:grid;grid-template-columns:105px 1fr auto;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.event:last-child{border-bottom:none}.event-time,.duration{font-size:12px;font-variant-numeric:tabular-nums}.event-time{color:var(--muted)}.event-main{font-size:13px;display:flex;align-items:center;gap:9px}.event-main:before{content:"";height:8px;width:8px;flex-shrink:0;border-radius:100%;background:var(--red)}.duration{color:#c4cbd3;text-align:right}.insight{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.9}.insight strong{color:var(--ink);font-weight:550}.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}.insight-grid div{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:11px}.insight-grid span{display:block;font-size:11px;color:var(--muted)}.insight-grid strong{display:block;font-size:20px;letter-spacing:-.04em;font-weight:530;margin-top:6px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.action{border:1px solid #343d45;background:#181d23;color:#c8d0d8;border-radius:9px;padding:8px 12px;font:inherit;font-size:12px;cursor:pointer}.action:hover{border-color:#58646e;color:white}.action:disabled{opacity:.4;cursor:default}.empty{font-size:13px;color:var(--muted);padding:19px 0}.error-note{color:var(--red);font-size:12px;margin-top:10px}.hidden{display:none!important}footer{font-size:11px;color:var(--subtle);margin-top:42px}.footnote{font-size:12px;color:var(--muted);margin-top:12px}
 @media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.primary{grid-column:1/-1}.lower{grid-template-columns:1fr}.topbar{margin-bottom:27px}}
 @media(max-width:550px){.wrap{padding:20px 14px 55px}.topbar{align-items:flex-start}.identity{gap:8px;font-size:13px}.slash{display:none}.intro{align-items:flex-start;flex-direction:column}.grid{gap:9px}.surface{padding:17px;border-radius:12px}.value{font-size:31px}.secondary-value{font-size:33px}.weekrow{grid-template-columns:56px 1fr 54px;gap:8px}.last{font-size:11px}.right{gap:6px}.pill{display:none}.event{grid-template-columns:94px 1fr auto;gap:7px}.event-main{font-size:12px}.event-time,.duration{font-size:11px}footer{display:block}footer span{display:block}.section-title{margin-top:27px}}
+
+/* Activity calendar and historical insights */
+.cal-panel{padding:23px}
+.cal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:17px}
+.cal-summary{font-size:17px;font-weight:550;color:var(--ink);letter-spacing:-.025em}
+.cal-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.cal-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--muted);font-size:10px}
+.cal-key{width:12px;height:12px;border-radius:3px;border:1px solid #ffffff0b;display:inline-block}
+.cal-scroll{overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:7px;scrollbar-color:#404a55 transparent}
+.cal-layout{display:grid;grid-template-columns:27px max-content;column-gap:10px;row-gap:7px;width:max-content;min-width:100%}
+.cal-months{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(53,13px);gap:4px;width:max-content;height:16px}
+.cal-months span{white-space:nowrap;font-size:10px;color:var(--subtle);text-transform:uppercase;letter-spacing:.025em}
+.cal-weekdays{grid-column:1;grid-row:2;display:grid;grid-template-rows:repeat(7,13px);row-gap:4px;align-items:center;color:var(--subtle);font-size:9px}
+.cal-grid{grid-column:2;grid-row:2;display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,13px);grid-auto-columns:13px;gap:4px;width:max-content}
+.cal-cell{appearance:none;width:13px;height:13px;border:1px solid transparent;border-radius:3px;background:#18392d;cursor:pointer;padding:0;transition:transform .12s,filter .12s}
+.cal-cell.intensity-0{background:#1c4435}
+.cal-cell.intensity-1{background:#655943}
+.cal-cell.intensity-2{background:#97704d}
+.cal-cell.intensity-3{background:#ba654e}
+.cal-cell.intensity-4{background:#d95662}
+.cal-cell.no-data{background:#2c3239}
+.cal-cell:disabled{opacity:.28;cursor:default}
+.cal-cell.today-cell{outline:1px solid #9ba7b6;outline-offset:1px}
+.cal-cell[aria-pressed="true"]{border-color:#fafafa;box-shadow:0 0 0 1px #fafafa44}
+.cal-cell:not(:disabled):hover{filter:brightness(1.35);transform:scale(1.2)}
+.cal-cell:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.cal-details{min-height:38px;margin-top:18px;padding:11px 14px;border-radius:8px;background:#171d22;color:#c5cdd6;border:1px solid #28313a;font-size:12px;display:flex;align-items:center}
+.insight-hour{margin-top:13px}
+.hour-chart{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:5px;height:92px;align-items:end;margin-top:22px;padding:0 2px}
+.hour-slot{height:100%;position:relative;background:#1b242a;border-radius:4px;overflow:hidden;display:flex;align-items:flex-end}
+.hour-fill{display:block;width:100%;background:#557e80;min-height:0;border-radius:4px 4px 0 0;transition:height .2s}
+.hour-fill.peak-hour{background:#70c49c}
+.hour-slot:hover .hour-fill{filter:brightness(1.3)}
+.hour-ticks{display:flex;justify-content:space-between;color:var(--subtle);font-size:10px;font-variant-numeric:tabular-nums;margin:9px 0 5px}
+.hour-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.hour-metric{border:1px solid var(--line);border-radius:10px;background:var(--panel2);padding:15px}
+.hour-metric span{display:block;color:var(--muted);font-size:11px;line-height:1.35}
+.hour-metric strong{display:block;font-size:21px;font-weight:540;letter-spacing:-.025em;margin-top:5px}
+@media(max-width:700px){.hour-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.cal-panel{padding:17px}.cal-layout{min-width:0}.cal-head{gap:8px}.hour-chart{gap:3px}}
+
 </style>
 </head>
 <body>
@@ -34,6 +74,46 @@
   <section class="surface"><div class="track" id="mainTrack" aria-label="Estimated availability timeline"></div><div class="times" id="tickLabels"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div><div class="legend"><span><i class="swatch"></i>No interruption recorded</span><span><i class="swatch red"></i>Interrupted</span><span><i class="swatch gray"></i>Not observed</span></div><div class="footnote">Intervals are inferred from heartbeat gaps, not directly measured grid voltage.</div></section>
   <div class="section-title"><h3>Recent days</h3><span class="right-note">Last 7 calendar days</span></div>
   <section class="surface"><div class="seven" id="weekRows"><div class="empty">Loading daily history…</div></div></section>
+
+  <div class="section-title"><h3>Activity calendar</h3><span class="right-note">Last 12 months · select a day</span></div>
+  <section class="surface cal-panel" aria-label="Activity calendar">
+    <div class="cal-head">
+      <div><div class="cal-summary" id="calendarSummary">Loading daily activity…</div><div class="cal-sub">Total interruptions and downtime across the visible calendar</div></div>
+      <div class="cal-legend" aria-label="Daily downtime legend">
+        <span>Less</span>
+        <i class="cal-key" style="background:#1c4435" title="No interruptions recorded"></i>
+        <i class="cal-key" style="background:#655943" title="Under 1 hour"></i>
+        <i class="cal-key" style="background:#97704d" title="1–3 hours"></i>
+        <i class="cal-key" style="background:#ba654e" title="3–6 hours"></i>
+        <i class="cal-key" style="background:#d95662" title="6 or more hours"></i>
+        <span>More</span>
+        <i class="cal-key" style="background:#2c3239;margin-left:7px" title="No recorded history"></i><span>No data</span>
+      </div>
+    </div>
+    <div class="cal-scroll">
+      <div class="cal-layout">
+        <div class="cal-months" id="calendarMonths" aria-hidden="true"></div>
+        <div class="cal-weekdays" aria-hidden="true"><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span>Sun</span></div>
+        <div class="cal-grid" id="calendarGrid" role="group" aria-label="Select a date using arrow keys"></div>
+      </div>
+    </div>
+    <div class="cal-details" id="calendarDetails" aria-live="polite">Choose a date to see its recorded interruptions.</div>
+    <div class="footnote">Days before the first recorded incident are shown as unknown. Green indicates no interruption recorded, not independent confirmation of electrical power.</div>
+  </section>
+
+  <section class="surface insight-hour" aria-label="Historical power patterns">
+    <div class="section-title" style="margin:0 0 6px"><h3>When interruptions start</h3><span class="right-note">Last 12 months · local time</span></div>
+    <div class="meta" id="hourSummary">Loading time-of-day distribution…</div>
+    <div class="hour-chart" id="hourChart" aria-label="Interruptions by start hour"></div>
+    <div class="hour-ticks"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>
+    <div class="hour-metrics">
+      <div class="hour-metric"><span>Most frequent start</span><strong id="peakHour">—</strong></div>
+      <div class="hour-metric"><span>Median interruption</span><strong id="medianOutage">—</strong></div>
+      <div class="hour-metric"><span>Longest quiet interval</span><strong id="quietStreak">—</strong></div>
+      <div class="hour-metric"><span>Night downtime <small style="font-weight:normal">(22–07)</small></span><strong id="nightShare">—</strong></div>
+    </div>
+    <div class="footnote">Hourly bars show when interruptions began, not their duration. Quiet intervals mean no incident was logged; measurement remains heartbeat-based.</div>
+  </section>
   <div class="lower">
     <section class="surface"><div class="section-title" style="margin:0 0 5px"><h3>Recent interruptions</h3><span class="right-note">Device-local time</span></div><div class="events" id="eventList"><div class="empty">Loading history…</div></div><div class="actions"><button type="button" class="action hidden" id="showMore">Show all incidents</button><button type="button" class="action" id="exportCsv" disabled>Export CSV</button></div></section>
     <section class="surface"><div class="section-title" style="margin:0 0 5px"><h3>Patterns</h3><span class="right-note" id="insightPeriod">Today</span></div><p class="insight" id="insightText">Waiting for monitoring data.</p><div class="insight-grid"><div><span>Total downtime</span><strong id="totalDowntime">—</strong></div><div><span>Average interruption</span><strong id="averageOutage">—</strong></div></div></section>
@@ -43,5 +123,6 @@
 <p class="error-note hidden" id="errorNote" role="alert"></p>
 </div>
 <script src="/static/script.js" defer></script>
+<script src="/static/insights.js" defer></script>
 </body>
 </html>
