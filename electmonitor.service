@@ -1,0 +1,14 @@
+[Unit]
+Description=Electricity Status Monitor
+After=network.target
+
+[Service]
+User=greene
+WorkingDirectory=/home/greene/powerOutage
+ExecStart=/usr/bin/python3 /home/greene/powerOutage/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
