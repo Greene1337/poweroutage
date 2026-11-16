@@ -92,7 +92,7 @@ function renderSevenDays(now) {
   const rows=$('weekRows');rows.replaceChildren();
   const today=startOfDay(new Date(now));
   const earliest=state.outages.length?Math.min(...state.outages.map(o=>o.start)):now;
-  for(let i=6;i>=0;i--) {
+  for(let i=0;i<7;i++) {
     const startDate=new Date(today);startDate.setDate(startDate.getDate()-i);
     const start=startDate.getTime(),end=new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDate()+1).getTime();
     const observedEnd=Math.min(end,now);
@@ -165,6 +165,7 @@ function render(now=Date.now()) {
   const days=state.selected==='month'?15:state.selected==='week'?7:12;
   for(let i=days-1;i>=0;i--){const end=new Date(now);end.setHours(0,0,0,0);end.setDate(end.getDate()-i);const begin=end.getTime();const finish=new Date(end.getFullYear(),end.getMonth(),end.getDate()+1).getTime();const d=analyze(state.outages,begin,Math.min(finish,now));const bar=document.createElement('i');bar.style.height=`${Math.max(10,Math.min(100,d.downtime/DAY*100))}%`;bar.title=`${localDate(end)} · ${formatDuration(d.downtime)} downtime`;spark.appendChild(bar);}
   renderEvents();
+  if (typeof window.renderExtendedInsights === "function") window.renderExtendedInsights({outages:state.outages,now});
 }
 async function getJson(url) {
   const res=await fetch(url,{cache:'no-store'});
