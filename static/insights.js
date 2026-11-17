@@ -128,6 +128,8 @@
         const label = rootDocument.createElement('span');
         label.textContent = d.toLocaleDateString(undefined,{month:'short'});
         label.style.gridColumn = String(week+1) + ' / span 4';
+        // Every label shares the same row. Auto-placement could shift later months down.
+        label.style.gridRow = '1';
         months.appendChild(label);
       }
       previousMonth = nextMonth;
